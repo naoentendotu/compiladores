@@ -6,11 +6,13 @@ Este projeto implementa um **analisador sintático preditivo LL(1)** para valida
 
 ## 🧾 Gramática
 
-````S → D S | ε
+```
+S → D S | ε
 D → T L ;
 T → int | float | char
 L → id L′
-L′ → , id L′ | ε```
+L′ → , id L′ | ε
+```
 
 - **Símbolo inicial:** `S`
 - **Não-terminais (VN):** {S, D, T, L, L′}
@@ -18,32 +20,40 @@ L′ → , id L′ | ε```
 
 ### ✅ Exemplos de cadeias válidas
 
-```int x;
+```
+int x;
 float a, b, c;
 char c1;
-int x; float y; char z;```
+int x; float y; char z;
+```
 
 ### ❌ Exemplos de cadeias inválidas
 
-```int ; // falta identificador
+```
+int ; // falta identificador
 float , a; // vírgula no lugar errado
-char a b; // falta vírgula```
+char a b; // falta vírgula
+```
 
 ## Conjuntos First
 
-```First(S) = { int, float, char, ε }
+```
+First(S) = { int, float, char, ε }
 First(D) = { int, float, char }
 First(T) = { int, float, char }
 First(L) = { id }
-First(L′) = { ,, ε }```
+First(L′) = { ,, ε }
+```
 
 ## Conjuntos Follow
 
-```Follow(S) = { $ }
+```
+Follow(S) = { $ }
 Follow(D) = { int, float, char, $ }
 Follow(T) = { id }
 Follow(L) = { ; }
-Follow(L′) = { ; }```
+Follow(L′) = { ; }
+```
 
 ## 📋 Tabela LL(1)
 
@@ -56,6 +66,23 @@ A implementação foi realizada em **Python**, utilizando:
 - Uma **pilha** para armazenar os símbolos em análise.
 - Uma **tabela LL(1)** representada como dicionário.
 - Consumo de tokens até o símbolo de fim de cadeia (`$`).
+
+## ▶️ Como Executar o Projeto
+
+1. **Clone este repositório**:
+
+   ```bash
+   git clone https://github.com/naoentendotu/analisador-sintatico-preditivo-LL1
+   cd analisador-sintatico-preditivo-LL1
+   ```
+
+2. **Certifique-se de ter o Python 3 instalado**:
+
+`python --version `
+
+3. **Execute o analisador**:
+
+`python analisador.py`
 
 ## 🧪 Testes
 
@@ -70,13 +97,12 @@ Foram aplicados testes com cadeias **válidas** e **inválidas**:
 
 ## Conclusão
 
-A implementação permitiu compreender na prática o funcionamento de um **analisador sintático preditivo LL(1)**.
+A implementação permitiu compreender na prática o funcionamento de um **analisador sintático preditivo LL(1)**.  
 O cálculo correto dos conjuntos **First** e **Follow** foi essencial para construir a tabela de análise, garantindo que o programa validasse corretamente as sentenças válidas e rejeitasse as inválidas.
 
-## 👥 Autores
+## 👥 Autoras
 
 - Julia Gomes
 - Tuliana Andrade
 
 📍 _Universidade Federal de Mato Grosso – Instituto de Computação – 2025_
-````
