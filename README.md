@@ -6,15 +6,11 @@ Este projeto implementa um **analisador sintático preditivo LL(1)** para valida
 
 ## 🧾 Gramática
 
-S → D S | ε
-
+````S → D S | ε
 D → T L ;
-
 T → int | float | char
-
 L → id L′
-
-L′ → , id L′ | ε
+L′ → , id L′ | ε```
 
 - **Símbolo inicial:** `S`
 - **Não-terminais (VN):** {S, D, T, L, L′}
@@ -22,45 +18,32 @@ L′ → , id L′ | ε
 
 ### ✅ Exemplos de cadeias válidas
 
-int x;
-
+```int x;
 float a, b, c;
-
 char c1;
-
-int x; float y; char z;
+int x; float y; char z;```
 
 ### ❌ Exemplos de cadeias inválidas
 
-int ; // falta identificador
-
+```int ; // falta identificador
 float , a; // vírgula no lugar errado
-
-char a b; // falta vírgula
+char a b; // falta vírgula```
 
 ## Conjuntos First
 
-First(S) = { int, float, char, ε }
-
+```First(S) = { int, float, char, ε }
 First(D) = { int, float, char }
-
 First(T) = { int, float, char }
-
 First(L) = { id }
-
-First(L′) = { ,, ε }
+First(L′) = { ,, ε }```
 
 ## Conjuntos Follow
 
-Follow(S) = { $ }
-
+```Follow(S) = { $ }
 Follow(D) = { int, float, char, $ }
-
 Follow(T) = { id }
-
 Follow(L) = { ; }
-
-Follow(L′) = { ; }
+Follow(L′) = { ; }```
 
 ## 📋 Tabela LL(1)
 
@@ -87,7 +70,7 @@ Foram aplicados testes com cadeias **válidas** e **inválidas**:
 
 ## Conclusão
 
-A implementação permitiu compreender na prática o funcionamento de um **analisador sintático preditivo LL(1)**.  
+A implementação permitiu compreender na prática o funcionamento de um **analisador sintático preditivo LL(1)**.
 O cálculo correto dos conjuntos **First** e **Follow** foi essencial para construir a tabela de análise, garantindo que o programa validasse corretamente as sentenças válidas e rejeitasse as inválidas.
 
 ## 👥 Autores
@@ -96,3 +79,4 @@ O cálculo correto dos conjuntos **First** e **Follow** foi essencial para const
 - Tuliana Andrade
 
 📍 _Universidade Federal de Mato Grosso – Instituto de Computação – 2025_
+````
