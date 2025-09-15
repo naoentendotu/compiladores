@@ -7,9 +7,13 @@ Este projeto implementa um **analisador sintático preditivo LL(1)** para valida
 ## 🧾 Gramática
 
 S → D S | ε
+
 D → T L ;
+
 T → int | float | char
+
 L → id L′
+
 L′ → , id L′ | ε
 
 - **Símbolo inicial:** `S`
@@ -19,30 +23,43 @@ L′ → , id L′ | ε
 ### ✅ Exemplos de cadeias válidas
 
 int x;
+
 float a, b, c;
+
 char c1;
+
 int x; float y; char z;
 
 ### ❌ Exemplos de cadeias inválidas
 
 int ; // falta identificador
+
 float , a; // vírgula no lugar errado
+
 char a b; // falta vírgula
 
 ## Conjuntos First
 
 First(S) = { int, float, char, ε }
+
 First(D) = { int, float, char }
+
 First(T) = { int, float, char }
+
 First(L) = { id }
+
 First(L′) = { ,, ε }
 
 ## Conjuntos Follow
 
 Follow(S) = { $ }
+
 Follow(D) = { int, float, char, $ }
+
 Follow(T) = { id }
+
 Follow(L) = { ; }
+
 Follow(L′) = { ; }
 
 ## 📋 Tabela LL(1)
