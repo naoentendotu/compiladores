@@ -4,8 +4,6 @@
 
 Este projeto implementa um **analisador sintático preditivo LL(1)** para validação de **declarações de variáveis** em uma linguagem simples. A gramática utilizada suporta tipos primitivos (`int`, `float`, `char`) e múltiplos identificadores por linha.
 
----
-
 ## 🧾 Gramática
 
 S → D S | ε
@@ -31,8 +29,6 @@ int ; // falta identificador
 float , a; // vírgula no lugar errado
 char a b; // falta vírgula
 
----
-
 ## Conjuntos First
 
 First(S) = { int, float, char, ε }
@@ -49,13 +45,9 @@ Follow(T) = { id }
 Follow(L) = { ; }
 Follow(L′) = { ; }
 
----
-
 ## 📋 Tabela LL(1)
 
 A tabela de análise LL(1) foi construída a partir dos conjuntos **First** e **Follow** para orientar o algoritmo na escolha das produções.
-
----
 
 ## 💻 Implementação
 
@@ -64,8 +56,6 @@ A implementação foi realizada em **Python**, utilizando:
 - Uma **pilha** para armazenar os símbolos em análise.
 - Uma **tabela LL(1)** representada como dicionário.
 - Consumo de tokens até o símbolo de fim de cadeia (`$`).
-
----
 
 ## 🧪 Testes
 
@@ -78,14 +68,10 @@ Foram aplicados testes com cadeias **válidas** e **inválidas**:
 | `int id ; char id ;` | Aceita    |
 | `int ;`              | Rejeita   |
 
----
-
 ## Conclusão
 
 A implementação permitiu compreender na prática o funcionamento de um **analisador sintático preditivo LL(1)**.  
 O cálculo correto dos conjuntos **First** e **Follow** foi essencial para construir a tabela de análise, garantindo que o programa validasse corretamente as sentenças válidas e rejeitasse as inválidas.
-
----
 
 ## 👥 Autores
 
